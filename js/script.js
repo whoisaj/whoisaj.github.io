@@ -55,7 +55,6 @@ $(document).ready(function() {
 // Clock
 window.onload = function () {
         setInterval(showClock, 1000);
-
         function showClock() {
 
             // DEFINE CANVAS AND ITS CONTEXT.
@@ -116,8 +115,8 @@ window.onload = function () {
 			function SHOW_FULL_CITY_AND_TIME(){
 				ctx.fillStyle = '#fff';
 				ctx.font = "14px Arial";
-				var hours = date.getHours();
-				var minutes = date.getMinutes();
+				var hours = moment().tz("Europe/Vilnius").format('HH');
+				var minutes = moment().tz("Europe/Vilnius").format('mm');
 				ctx.fillText("LITHUANIA, VILNIUS | " + hours + ":" + minutes, canvas.width / 2, canvas.height / 1.6);
 				ctx.stroke();
 			}
@@ -165,7 +164,7 @@ window.onload = function () {
 
             function SHOW_SECONDS() {
 
-                var sec = date.getSeconds();
+                var sec = moment().tz("Europe/Vilnius").format('ss');
                 angle = ((Math.PI * 2) * (sec / 60)) - ((Math.PI * 2) / 4);
                 ctx.lineWidth = 0.5;              // HAND WIDTH.
 
@@ -188,7 +187,7 @@ window.onload = function () {
 
             function SHOW_MINUTES() {
 
-                var min = date.getMinutes();
+                var min = moment().tz("Europe/Vilnius").format('mm');
                 angle = ((Math.PI * 2) * (min / 60)) - ((Math.PI * 2) / 4);
                 ctx.lineWidth = 3;              // HAND WIDTH.
 
@@ -204,8 +203,8 @@ window.onload = function () {
 
             function SHOW_HOURS() {
 
-                var hour = date.getHours();
-                var min = date.getMinutes();
+                var hour = moment().tz("Europe/Vilnius").format('HH');
+                var min = moment().tz("Europe/Vilnius").format('mm');
 				var hourOverhang = 20;
 				
                 angle = ((Math.PI * 2) * ((hour * 5 + (min / 60) * 5) / 60)) - ((Math.PI * 2) / 4);
